@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي - Learning Cast</title>
+    <link rel="stylesheet" href="profile.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Learning Cast</div>
+            <div class="nav-buttons">
+                <button class="home-btn" onclick="goToHome()">🏠 الرئيسية</button>
+                <button class="logout-btn" onclick="simulateLogout()">تسجيل الخروج</button>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Profile Section -->
+    <main class="profile-container">
+        <div class="profile-box">
+            <h2><i class="fas fa-user"></i> الملف الشخصي</h2>
+
+            <!-- Profile Picture -->
+            <div class="profile-picture">
+                <label for="profile-pic-upload" class="profile-pic-label">
+                    <img src="default-avatar.png" alt="صورة الملف الشخصي" id="profile-pic-preview">
+                    <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
+                </label>
+            </div>
+
+            <!-- Editable Fields -->
+            <form class="profile-form" novalidate>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="اسم المستخدم" required autocomplete="username">
+                </div>
+
+                <div class="input-group password-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="كلمة المرور الجديدة" autocomplete="new-password">
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirm-password" placeholder="تأكيد كلمة المرور" autocomplete="new-password">
+                </div>
+
+                <!-- Save Changes Button -->
+                <button type="submit" class="save-btn">حفظ التغييرات</button>
+            </form>
+
+            <!-- Delete Account Button -->
+            <button type="button" class="delete-btn" onclick="deleteAccount()">حذف الحساب</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learning Cast. All rights reserved.</p>
+    </footer>
+
+    <script src="profile.js"></script>
+</body>
+</html>

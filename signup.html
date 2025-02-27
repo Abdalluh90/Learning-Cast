@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب - Learning Cast</title>
+    <link rel="stylesheet" href="signup.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <div class="signup-container">
+        <div class="signup-box" data-aos="fade-up">
+            <h2><i class="fas fa-user-plus"></i> إنشاء حساب جديد</h2>
+            <form class="signup-form" novalidate>
+                <!-- Username Field -->
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="اسم المستخدم" required autocomplete="username" aria-label="اسم المستخدم" aria-invalid="false">
+                </div>
+
+                <!-- Email Field -->
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="البريد الإلكتروني" required autocomplete="email" aria-label="البريد الإلكتروني" aria-invalid="false">
+                </div>
+
+                <!-- Age Field -->
+                <div class="input-group">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="number" id="age" placeholder="العمر" required autocomplete="bday" aria-label="العمر" aria-invalid="false">
+                </div>
+
+                <!-- Gender Field -->
+                <div class="input-group">
+                    <i class="fas fa-venus-mars"></i>
+                    <select id="gender" required aria-label="اختر النوع" aria-invalid="false">
+                        <option value="" disabled selected>اختر النوع</option>
+                        <option value="male">ذكر</option>
+                        <option value="female">أنثى</option>
+                    </select>
+                </div>
+
+                <!-- Password Field -->
+                <div class="input-group password-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="كلمة المرور" required autocomplete="new-password" aria-label="كلمة المرور" aria-invalid="false">
+                </div>
+                <div class="password-strength">
+                    <div class="bar"></div>
+                    <p id="strength-text">قوة كلمة المرور: ضعيفة</p>
+                </div>
+
+                <!-- Confirm Password Field -->
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirm-password" placeholder="تأكيد كلمة المرور" required autocomplete="new-password" aria-label="تأكيد كلمة المرور" aria-invalid="false">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="signup-btn">إنشاء الحساب</button>
+
+                <!-- Login Link -->
+                <p class="login-link">لديك حساب؟ <a href="login.html"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="signup.js"></script>
+    <script>
+        AOS.init();
+
+        // Initialize Particles.js
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('Particles.js loaded');
+        });
+
+        // Back to Top Button
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

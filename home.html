@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learning Cast provides high-quality educational podcasts in technology, freelancing, languages, and self-improvement.">
+    <meta name="keywords" content="podcasts, education, technology, freelancing, languages, self-improvement">
+    <meta name="author" content="Your Name">
+    <title>Learning Cast - Home</title>
+    <link rel="stylesheet" href="home.css">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader">Loading...</div>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+                Learning <span class="highlight">Cast</span>
+            </div>
+
+            <!-- Hamburger Icon for Mobile -->
+            <div class="hamburger" id="hamburger">
+                ☰
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div id="auth-buttons">
+                    <a href="login.html" class="auth-link">Log in</a>
+                    <a href="signup.html" class="auth-link">Sign up</a>
+                </div>
+                <div id="profile-link" style="display: none;">
+                    <a href="profile.html" class="profile-btn"><i class="fas fa-user"></i> Profile</a>
+                    <button class="logout-btn" onclick="simulateLogout()">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <video autoplay muted loop id="welcome-video">
+                <source src="https://assets.onecompiler.app/42ztq5npj/4389b3kbf/istockphoto-1438791090-640_adpp_is.mp4" type="video/mp4">
+            </video>
+            <div class="hero-content">
+                <h1 data-aos="fade-up" data-aos-duration="1000">Welcome to Learning Cast</h1>
+                <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Discover inspiring podcasts on technology, freelancing, and more.</p>
+                
+               <!-- Search Bar -->
+<form class="search-bar" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+    <input type="text" placeholder="Search for podcasts..." />
+    <button type="submit">
+        <i class="fas fa-search"></i> <!-- أيقونة البحث من Font Awesome -->
+    </button>
+</form>
+                
+                <a href="#categories" class="cta-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">Explore Podcasts</a>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="podcast-section">
+            <h3 data-aos="fade-up">Explore Our Podcasts</h3>
+            <div class="podcast-grid">
+                <!-- Existing Podcasts -->
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000">
+                    <img src="../photo/english.jpg" alt="Learn English" loading="lazy">
+                    <h4>Learn English</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+                </div>
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="../photo/design.jpeg" alt="Design Talks" loading="lazy">
+                    <h4>Design Talks</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+                </div>
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <img src="../photo/german.png" alt="Learn German" loading="lazy">
+                    <h4>Learn German</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+                </div>
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <img src="../photo/ai.png" alt="AI Chitchat" loading="lazy">
+                    <h4>AI Chitchat</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+                </div>
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+                    <img src="../photo/ask.jpeg" alt="Ask Developer" loading="lazy">
+                    <h4>Ask Developer</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+                </div>
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
+                    <img src="../photo/freelance.jpeg" alt="Freelance Insights" loading="lazy">
+                    <h4>Freelance Insights</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+                </div>
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">
+                    <img src="../photo/programming.png" alt="Programming World" loading="lazy">
+                    <h4>Programming World</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+                </div>
+
+                <!-- New Podcasts -->
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1400">
+                    <img src="photo/elzat.jpeg" alt="Self Development" loading="lazy">
+                    <h4>Self Development</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+                </div>
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1600">
+                    <img src="photo/elngah.jpeg" alt="Road to Success" loading="lazy">
+                    <h4>Road to Success</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+                </div>
+                <div class="podcast-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1600">
+                    <img src="photo/french.png" alt="Learn French" loading="lazy">
+                    <h4>Learn French</h4>
+                    <a href="#" class="listen-btn">Listen Now</a>
+            </div>
+        </section>
+        
+      <!-- About Section -->
+<section id="about" class="about-section">
+    <div class="about-content" data-aos="fade-up">
+        <h3 data-aos="fade-up">  Learning Cast يقدم لك</h3>
+        <p data-aos="fade-up" data-aos-delay="200">
+             محتوى تعليمي عالي الجودة من خلال بودكاستات متنوعة تغطي مجالات التكنولوجيا، العمل الحر، تعلم اللغات، وتطوير الذات. مهمتنا هي تسهيل الوصول إلى المعرفة بطريقة مرنة وممتعة تناسب جميع الأعمار والفئات.
+        </p>
+
+        <!-- Key Features -->
+        <div class="key-features">
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                <h4>متاح في أي مكان</h4>
+                <p>استمع إلى البودكاست الخاصة بنا في أي وقت ومن أي مكان - سواء كنت في طريقك للعمل، أثناء ممارسة الرياضة، أو أثناء الاسترخاء في المنزل.</p>
+            </div>
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="600">
+                <h4>تعلم شامل</h4>
+                <p>مصمم خصيصًا للأشخاص الذين يفضلون المحتوى الصوتي على مقاطع الفيديو، بما في ذلك ذوي الإعاقة البصرية أو أولئك الذين لديهم جداول زمنية مزدحمة.</p>
+            </div>
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="800">
+                <h4>مواضيع متنوعة</h4>
+                <p>اكتشف مجموعة واسعة من المواضيع، بما في ذلك التكنولوجيا، العمل الحر، اللغات، تطوير الذات والمزيد.</p>
+            </div>
+        </div>
+
+        <!-- Target Audience -->
+        <div class="audience-info" data-aos="fade-up" data-aos-delay="1000">
+            <h4>لمن هذا الموقع؟</h4>
+            <ul>
+                <li>الطلاب الذين يبحثون عن موارد تعليمية إضافية.</li>
+                <li>المحترفون الذين يرغبون في تحسين مهاراتهم أو البقاء على اطلاع في مجالاتهم.</li>
+                <li>متعلمي اللغات الذين يسعون لتحسين مهارات الاستماع.</li>
+                <li>الأفراد ذوي الإعاقة البصرية أو الذين لا يستطيعون مشاهدة مقاطع الفيديو.</li>
+            </ul>
+        </div>
+
+        <!-- Importance of Podcasts -->
+        <div class="podcast-importance" data-aos="fade-up" data-aos-delay="1200">
+            <h4>لماذا اختيار البودكاست؟</h4>
+            <p>Learning Castتقدم البودكاست طريقة فريدة للتعلم دون الحاجة إلى الشاشات. تتيح لك إمكانية القيام بمهام متعددة، توفير الوقت، وامتصاص المعرفة بسهولة. سواء كنت في التنقل أو تسترخي، فإن  Learning Cast يضمن أن التعليم يتناسب بسلاسة مع نمط حياتك.</p>
+        </div>
+    </div>
+</section>
+<!-- Popup Confirmation -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <h3>شكراً لك!</h3>
+        <p>تم إرسال رسالتك بنجاح. سنعود إليك قريبًا.</p>
+        <button id="close-popup" class="submit-btn">إغلاق</button>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="contact-content" data-aos="fade-up">
+        <h3>اتصل بنا</h3>
+        <p>إذا كانت لديك أي استفسارات أو اقتراحات، فلا تتردد في التواصل معنا من خلال النموذج أدناه.</p>
+
+        <!-- Contact Form -->
+        <form class="contact-form" data-aos="fade-up" data-aos-delay="200">
+            <div class="form-group">
+                <label for="name">الاسم</label>
+                <input type="text" id="name" name="name" placeholder="أدخل اسمك..." required>
+            </div>
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" placeholder="أدخل بريدك الإلكتروني..." required>
+            </div>
+            <div class="form-group">
+                <label for="message">الرسالة</label>
+                <textarea id="message" name="message" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">إرسال الرسالة</button>
+        </form>
+    </div>
+</section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learning Cast. All rights reserved.</p>
+        <nav>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </footer>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up icon"></i> <!-- أيقونة السهم للأعلى -->
+    </button>
+
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon icon"></i> <!-- أيقونة القمر -->
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

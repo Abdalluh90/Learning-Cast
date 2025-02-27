@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Cast - Home</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="player.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Learning Cast</div>
+           
+            <div class="nav-links-container">
+                <div class="nav-links" id="navLinks">
+                    <a href="home.html" class="nav-link">Home</a>
+                </div>
+                <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+            </div>
+        </nav>
+    </header>
+    
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>قوائم التشغيل المقترحة</h2>
+            <ul id="suggested-playlists">
+                <li data-playlist="learn-english">
+                    <i class="fas fa-globe"></i>
+                    <span>تعلم الإنجليزية</span>
+                </li>
+                <li data-playlist="design-talks">
+                    <i class="fas fa-palette"></i>
+                    <span>تصميم الجرافيك</span>
+                </li>
+                <li data-playlist="learn-german">
+                    <i class="fas fa-book"></i>
+                    <span>تعلم الألمانية</span>
+                </li>
+                <li data-playlist="ai-chitchat">
+                    <i class="fas fa-robot"></i>
+                    <span>الذكاء الاصطناعي</span>
+                </li>
+                <li data-playlist="freelance-insights">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>نصائح العمل الحر</span>
+                </li>
+                <li data-playlist="programming-world">
+                    <i class="fas fa-code"></i>
+                    <span>عالم البرمجة</span>
+                </li>
+                <li data-playlist="self-development">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>تنمية ذاتية</span>
+                </li>
+                <li data-playlist="road-to-success">
+                    <i class="fas fa-trophy"></i>
+                    <span>الطريق إلى النجاح</span>
+                </li>
+                <li data-playlist="learn-french">
+                    <i class="fas fa-language"></i>
+                    <span>تعلم الفرنسية</span>
+                </li>
+                <li data-playlist="ask-developer">
+                    <i class="fas fa-question-circle"></i>
+                    <span>اسأل المطور</span>
+                </li>
+            </ul>
+    
+            <!-- قائمة الحلقات -->
+            <h2>الحلقات</h2>
+            <ul id="playlist">
+                <!-- الحلقات ستُحمّل ديناميكيًا هنا -->
+            </ul>
+        </aside>
+    
+        <!-- Main Player -->
+        <main class="player">
+            <!-- صورة الغلاف -->
+            <img id="playlist-cover" src="covers/default.jpg" alt="غلاف البودكاست" class="cover">
+            <h1 id="playlist-title">اختر قائمة تشغيل</h1>
+            <audio id="audio"></audio>
+            <div class="controls">
+                <button id="backward" class="control-btn">
+                    <i class="fas fa-backward-step"></i>
+                </button>
+                <button id="play" class="control-btn play-btn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="forward" class="control-btn">
+                    <i class="fas fa-forward-step"></i>
+                </button>
+            </div>
+            <div class="progress-container">
+                <span id="current-time">0:00</span>
+                <input type="range" id="progress" value="0" step="1" min="0" max="100">
+                <span id="total-time">0:00</span>
+            </div>
+        </main>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Learning Cast. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        
+    </footer>
+
+    <script src="player.js"></script>
+</body>
+</html>

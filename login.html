@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - Learning Cast</title>
+    <link rel="stylesheet" href="login.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <div class="login-container">
+        <div class="login-box" data-aos="fade-up">
+            <h2><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</h2>
+            <form class="login-form" novalidate>
+                <!-- Email Field -->
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="البريد الإلكتروني" required autocomplete="email" aria-label="البريد الإلكتروني" aria-invalid="false">
+                </div>
+
+                <!-- Password Field -->
+                <div class="input-group password-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="كلمة المرور" required autocomplete="current-password" aria-label="كلمة المرور" aria-invalid="false">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="login-btn">تسجيل الدخول</button>
+
+                <!-- Forgot Password Link -->
+                <p class="forgot-password-link"><a href="#">نسيت كلمة المرور؟</a></p>
+
+                <!-- Signup Link -->
+                <p class="signup-link">ليس لديك حساب؟ <a href="signup.html"><i class="fas fa-user-plus"></i> إنشاء حساب</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="login.js"></script>
+    <script>
+        AOS.init(); 
+    </script>
+</body>
+</html>

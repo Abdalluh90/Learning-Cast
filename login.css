@@ -1,0 +1,210 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffcc00, #ff6666, #6666ff); /* ألوان مدمجة */
+    background-size: 300% 300%; /* تأثير تحريك الخلفية */
+    animation: gradient-animation 10s infinite; /* تحريك التدرج */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Gradient Animation */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* Particles Background */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Login Container */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.login-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px; /* زوايا مستديرة */
+    box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff; /* تأثير Neumorphism */
+    animation: fadeIn 1s ease-in-out;
+}
+
+.login-box h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-box h2 i {
+    margin-left: 10px;
+    color: #ffcc00;
+}
+
+/* Input Fields */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #ffcc00;
+    font-size: 18px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 50px; /* زوايا مستديرة بالكامل */
+    background-color: #f4f4f4;
+    box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff; /* تأثير Neumorphism */
+    font-size: 18px;
+    transition: box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    box-shadow: inset 5px 5px 10px #d9d9d9, inset -5px -5px 10px #ffffff; /* تأثير عند التركيز */
+    outline: none;
+}
+
+/* Login Button */
+.login-btn {
+    background: linear-gradient(135deg, #ffcc00, #ff6666); /* تدرج ألوان */
+    border: none;
+    color: white;
+    padding: 14px 20px;
+    font-size: 20px;
+    border-radius: 50px; /* زوايا مستديرة بالكامل */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff; /* تأثير Neumorphism */
+}
+
+.login-btn:hover {
+    transform: scale(1.1);
+    box-shadow: inset 5px 5px 10px #d9d9d9, inset -5px -5px 10px #ffffff; /* تأثير عند التحويم */
+}
+
+/* Forgot Password Link */
+.forgot-password-link {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.forgot-password-link a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.forgot-password-link a:hover {
+    color: #e6b800;
+}
+
+/* Signup Link */
+.signup-link {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.signup-link a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+    color: #e6b800;
+}
+
+/* Message Bubble */
+.message-bubble {
+    position: fixed;
+    top: 90px; /* أعلى الصفحة */
+    left: 920px; /* يمين الصفحة */
+    background: #ffcc00;
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeInOut 5s ease-in-out forwards;
+}
+
+.message-bubble.success {
+    background: #4caf50; /* أخضر للنجاح */
+}
+
+.message-bubble.error {
+    background: #ff4d4d; /* أحمر للخطأ */
+}
+
+.message-bubble.warning {
+    background: #ff9800; /* برتقالي للتحذير */
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(-20px); /* تحريك للأعلى */
+    }
+    10%, 90% {
+        opacity: 1;
+        transform: translateY(0); /* العودة للوضع الطبيعي */
+    }
+}
+
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+#back-to-top:hover {
+    background-color: #e6b800;
+}
