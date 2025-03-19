@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموقع تحت الصيانة</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        canvas {
+            background: #fff;
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚧 الموقع تحت الصيانة 🚧</h1>
+        <p>نحن نعمل على تحسين الموقع. يمكنك اللعب أثناء الانتظار! 🎮</p>
+        <canvas id="gameCanvas" width="400" height="300"></canvas>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        let player = { x: 50, y: 250, width: 20, height: 20, dy: 0 };
+        let gravity = 0.5;
+        let isJumping = false;
+        
+        function drawPlayer() {
+            ctx.fillStyle = "blue";
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+        }
+        
+        function update() {
+            if (isJumping) {
+                player.dy -= gravity;
+            } else {
+                player.dy += gravity;
+            }
+            player.y += player.dy;
+            
+            if (player.y >= 250) {
+                player.y = 250;
+                isJumping = false;
+            }
+        }
+        
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPlayer();
+            update();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        document.addEventListener("keydown", function(event) {
+            if (event.code === "Space" && player.y >= 250) {
+                isJumping = true;
+                player.dy = -8;
+            }
+        });
+        
+        gameLoop();
+    </script>
+</body>
+</html>
