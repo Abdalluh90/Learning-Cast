@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffcc00, #ff6666, #6666ff); /* ألوان مدمجة */
+    background: linear-gradient(to right, #141e30, #243b55); /* ألوان مدمجة */
     background-size: 300% 300%; /* تأثير تحريك الخلفية */
     animation: gradient-animation 10s infinite; /* تحريك التدرج */
     height: 100vh;

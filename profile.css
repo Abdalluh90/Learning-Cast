@@ -1,200 +1,271 @@
-/* General Styles */
+/* استيراد الخطوط */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* إعدادات عامة */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* تحسين خلفية الصفحة */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    direction: rtl;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Navbar */
+/* الهيدر */
+header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background-color: #ffcc00;
-    color: white;
-    .nav-buttons {
-        display: flex;
-        gap: 10px; /* مسافة بين الأزرار */
-    }
-    
-    .home-btn, .logout-btn {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 16px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background 0.3s ease, transform 0.2s ease;
-    }
-    
-    .home-btn:hover {
-        background-color: #0056b3;
-        transform: scale(1.1);
-    }
-    
-    .logout-btn {
-        background-color: #ff4d4d;
-    }
-    
-    .logout-btn:hover {
-        background-color: #e60000;
-        transform: scale(1.1);
-    }
-    
+    max-width: 1100px;
+    margin: auto;
 }
 
-.navbar .logo {
+.logo {
     font-size: 24px;
     font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.logout-btn {
-    background-color: #ff4d4d;
-    border: none;
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-buttons button {
+    background: transparent;
     color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
+    border: none;
+    font-size: 16px;
     cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.logout-btn:hover {
-    background-color: #e60000;
+.nav-buttons button:hover {
+    color: #ffcc00;
+    transform: scale(1.1);
 }
 
-/* Profile Container */
+/* الحاوية الرئيسية للملف الشخصي */
 .profile-container {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-}
-
-.profile-box {
-    background-color: white;
-    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 900px;
+    padding: 40px;
+    margin-top: 120px; /* لمنع التداخل مع الهيدر */
+    gap: 30px;
+    position: relative;
+    animation: fadeIn 1s ease-out;
 }
 
-.profile-box h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.profile-box h2 i {
-    color: #ffcc00;
-}
-
-/* Profile Picture */
+/* صورة الملف الشخصي */
 .profile-picture {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
 }
 
-.profile-pic-label {
-    display: inline-block;
-    cursor: pointer;
-}
-
-#profile-pic-preview {
-    width: 100px;
-    height: 100px;
+.profile-picture img {
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
+    border: 4px solid #ffcc00;
     object-fit: cover;
-    border: 2px solid #ffcc00;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
     transition: transform 0.3s ease;
 }
 
-#profile-pic-preview:hover {
+.profile-picture img:hover {
     transform: scale(1.1);
 }
 
-/* Input Fields */
-.input-group {
-    position: relative;
+.upload-btn {
+    background: #ffcc00;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.upload-btn:hover {
+    background: #e6b800;
+    transform: scale(1.1);
+}
+
+/* معلومات المستخدم */
+.profile-info {
+    flex: 2;
+    width: 100%;
+}
+
+.profile-info h2 {
+    color: white;
+    font-size: 28px;
+    text-align: center;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.profile-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    width: 48%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .input-group i {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
+    margin-left: 10px;
     color: #ffcc00;
     font-size: 18px;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
     width: 100%;
-    padding: 14px 40px;
     border: none;
-    border-radius: 50px;
-    background-color: #f4f4f4;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    font-size: 18px;
-    transition: box-shadow 0.3s ease;
-}
-
-.input-group input:focus {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    color: rgb(21, 19, 19);
+    padding: 8px;
     outline: none;
+    font-size: 16px;
 }
 
-/* Save Changes Button */
-.save-btn {
-    background-color: #ffcc00;
+/* تنسيق الأزرار */
+.save-btn,
+.delete-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
     border: none;
-    color: black;
-    padding: 14px 20px;
-    font-size: 18px;
-    border-radius: 50px;
+    border-radius: 25px;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.save-btn {
+    background: #007bff;
+    color: white;
 }
 
 .save-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: #0056b3;
+    transform: scale(1.05);
 }
 
-/* Delete Account Button */
 .delete-btn {
-    background-color: #ff4d4d;
-    border: none;
+    background: #ff4d4d;
     color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 15px;
 }
 
 .delete-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: #e60000;
+    transform: scale(1.05);
 }
 
-/* Footer */
+/* الفوتر */
 footer {
     text-align: center;
-    padding: 10px;
-    background-color: #ffcc00;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
     color: white;
+    font-size: 14px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #e6b800;
+}
+
+/* استجابة للهواتف */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        padding: 30px;
+        max-width: 100%;
+        margin-top: 140px;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+
+    .profile-picture img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        align-items: flex-end;
+    }
 }

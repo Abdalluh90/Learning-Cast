@@ -9,59 +9,93 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
     <!-- Navbar -->
     <header>
         <nav class="navbar">
             <div class="logo">Learning Cast</div>
             <div class="nav-buttons">
-                <button class="home-btn" onclick="goToHome()">🏠 الرئيسية</button>
-                <button class="logout-btn" onclick="simulateLogout()">تسجيل الخروج</button>
+                <button class="home-btn" onclick="goToHome()"><i class="fas fa-home"></i> الرئيسية</button>
+                <button class="logout-btn" onclick="simulateLogout()"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+                
             </div>
         </nav>
     </header>
-    
+
     <!-- Profile Section -->
     <main class="profile-container">
-        <div class="profile-box">
+        <!-- صورة الملف الشخصي -->
+        <div class="profile-picture">
+            <img src="default-avatar.png" alt="صورة الملف الشخصي" id="profile-pic-preview">
+            <label for="profile-pic-upload" class="upload-btn">
+                <i class="fas fa-upload"></i> تغيير الصورة
+            </label>
+            <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
+        </div>
+
+        <!-- معلومات المستخدم -->
+        <div class="profile-info">
             <h2><i class="fas fa-user"></i> الملف الشخصي</h2>
 
-            <!-- Profile Picture -->
-            <div class="profile-picture">
-                <label for="profile-pic-upload" class="profile-pic-label">
-                    <img src="default-avatar.png" alt="صورة الملف الشخصي" id="profile-pic-preview">
-                    <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
-                </label>
-            </div>
-
-            <!-- Editable Fields -->
             <form class="profile-form" novalidate>
                 <div class="input-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="username" placeholder="اسم المستخدم" required autocomplete="username">
-                </div>
-
-                <div class="input-group password-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="كلمة المرور الجديدة" autocomplete="new-password">
+                    <input type="text" id="first-name" placeholder="الاسم الأول" required>
                 </div>
 
                 <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="confirm-password" placeholder="تأكيد كلمة المرور" autocomplete="new-password">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="last-name" placeholder="الاسم الأخير" required>
                 </div>
 
-                <!-- Save Changes Button -->
-                <button type="submit" class="save-btn">حفظ التغييرات</button>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" id="birthdate" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-venus-mars"></i>
+                    <select id="gender" required>
+                        <option value="" disabled selected>اختر النوع</option>
+                        <option value="male">ذكر</option>
+                        <option value="female">أنثى</option>
+                    </select>
+                </div>
+
+                <!-- حقل كلمة المرور الجديدة -->
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="كلمة المرور الجديدة">
+                </div>
+
+                <!-- تأكيد كلمة المرور -->
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirm-password" placeholder="تأكيد كلمة المرور">
+                </div>
+
+                <!-- حفظ التغييرات -->
+                <button type="submit" class="save-btn"><i class="fas fa-save"></i> حفظ التغييرات</button>
             </form>
 
-            <!-- Delete Account Button -->
-            <button type="button" class="delete-btn" onclick="deleteAccount()">حذف الحساب</button>
+            <!-- حذف الحساب -->
+            <button type="button" class="delete-btn" onclick="deleteAccount()"><i class="fas fa-trash"></i> حذف الحساب</button>
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Learning Cast. All rights reserved.</p>
+        <p>&copy; 2025 Learning Cast. جميع الحقوق محفوظة.</p>
     </footer>
 
     <script src="profile.js"></script>

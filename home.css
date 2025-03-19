@@ -93,7 +93,7 @@ body.dark-mode footer a {
 }
 
 .nav-links a:hover {
-    background-color: #ffcc00;
+    background-color: #efff0d;
     color: black;
 }
 
@@ -112,30 +112,27 @@ body.dark-mode footer a {
     background-color: #e6b800;
 }
 
-/* Profile Link */
+/* زر الملف الشخصي */
 .profile-btn {
-    background-color: #ffcc00;
-    color: black;
-    padding: 8px 16px;
-    border-radius: 20px;
+    background-color: #757be9;
+    color: #878ac3;
     text-decoration: none;
-    flex-grow: 1; /* جعل الأزرار بنفس العرض (اختياري) */
-    text-align: center; /* توسيط النص داخل الزر */
 }
 
+.profile-btn:hover {
+    background-color: #e6b800;
+    transform: scale(1.05);
+}
+
+/* زر تسجيل الخروج */
 .logout-btn {
-    background-color: #ff4d4d;
-    border: none;
+    background-color: #cd211b;
     color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    flex-grow: 1; /* جعل الأزرار بنفس العرض (اختياري) */
-    text-align: center; /* توسيط النص داخل الزر */
 }
 
 .logout-btn:hover {
     background-color: #e60000;
+    transform: scale(1.05);
 }
 .logo {
     font-family: 'Poppins', sans-serif;
@@ -506,15 +503,150 @@ footer a:hover {
     font-size: 24px;
     margin-bottom: 10px;
 }
+/* Contact Form */
+.contact-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* شفافية خفيفة */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.contact-content h3 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff; /* لون العنوان أبيض */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* ظل للعنوان */
+}
+
+.contact-content p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #f0f0f0; /* لون النصوص فاتح */
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.9); /* خلفية بيضاء شبه شفافة */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* ظل للنموذج */
+}
+
+.form-group {
+    text-align: right; /* النص من اليمين */
+}
+
+.form-group label {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333; /* لون العناوين غامق */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #d2cfc6;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8); /* خلفية شفافة قليلاً */
+    color: #333;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* ظل للحقول */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #e6b800;
+    box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3); /* تأثير عند التركيز */
+}
+.rating-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 50px;
+}
+
+.rating-stars input {
+    display: none; /* إخفاء أزرار التحديد */
+}
+
+.rating-stars label {
+    font-size: 50px;
+    cursor: pointer;
+    color: #0f0b0b; /* لون النجوم الافتراضي */
+    transition: color 0.3s ease-in-out;
+}
+
+/* عند تحريك الماوس فوق النجوم */
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+    color: gold;
+}
+
+/* عند اختيار نجمة، تلوينها مع النجوم السابقة */
+.rating-stars input:checked ~ label {
+    color: gold;
+}
+
+
+
+.rating-counter {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}
+.rating-counter {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+    text-align: right; /* النص من اليمين */
+}
+
+.submit-btn {
+    background-color: #ffcc00;
+    color: #000;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* ظل للزر */
+}
+
+.submit-btn:hover {
+    background-color: #e6b800; /* تغيير اللون عند التحويم */
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(255, 204, 0, 0.5); /* تأثير ظل أقوى */
+}
+
 /* Popup Styles */
-.popup { /* رساله التاكيد منبثقه */
-    display: none; /* Hidden by default */
+.popup {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
     justify-content: center;
     align-items: center;
@@ -528,12 +660,25 @@ footer a:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 90%;
+    animation: popup-animation 0.5s ease-out; /* تأثير ظهور المنبثق */
+}
+
+@keyframes popup-animation {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .popup-content h3 {
     font-size: 24px;
     margin-bottom: 15px;
     color: #333;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* ظل للنص */
 }
 
 .popup-content p {
@@ -549,10 +694,12 @@ footer a:hover {
     font-size: 24px;
     cursor: pointer;
     color: #ffcc00;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .close-btn:hover {
     color: #e6b800;
+    transform: rotate(90deg); /* تأثير دوران عند التحويم */
 }
 
 #close-popup {
@@ -564,85 +711,83 @@ footer a:hover {
     border-radius: 25px;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* ظل للزر */
 }
 
 #close-popup:hover {
     transform: scale(1.1);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(255, 204, 0, 0.5); /* تأثير ظل أقوى */
 }
-/* Contact Section */
-.contact-section {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #878ac3;; /* خلفية رمادية فاتحة */
-}
-
-.contact-content {
-    max-width: 600px;
-    margin: auto;
-}
-
-.contact-content h3 {
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #0c0000; /* لون العنوان */
-}
-
-.contact-content p {
-    font-size: 20px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: #0a0101; /* لون النصوص */
-}
-
-/* Contact Form */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 600px;
-    margin: auto;
-}
-
-.form-group {
-    text-align: right; /* النص من اليمين */
-}
-
-.form-group label {
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: #333; /* لون العناوين */
-}
-
-.form-group input,
-.form-group textarea {
+/* Search Container */
+.search-container {
+    position: relative;
     width: 100%;
-    padding: 12px;
-    border: 2px solid #ffcc00;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+    max-width: 400px;
+    margin: 20px auto;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #e6b800;
-}
-
-.submit-btn {
-    background-color: #efcf4f39;
-    color: rgb(10, 3, 0);
-    padding: 12px 20px;
-    font-size: 18px;
-    text-decoration: none;
-    border: none;
+/* Search Input */
+#dynamic-search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 25px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-.submit-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px rgb(161, 242, 57);
+#dynamic-search-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+/* Search Button */
+.search-container button {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.search-container button:hover {
+    color: #4CAF50;
+}
+
+/* Suggestions Dropdown */
+.suggestions-dropdown {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 10;
+    display: none; /* Hidden by default */
+}
+
+.suggestions-dropdown li {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.suggestions-dropdown li:hover {
+    background: #4CAF50;
+    color: white;
 }

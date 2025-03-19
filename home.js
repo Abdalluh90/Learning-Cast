@@ -122,12 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Handle Contact Form Submission
-const contactForm = document.querySelector('.contact-form');
+// Select DOM elements
+const contactForm = document.getElementById('contact-form');
 const popup = document.getElementById('popup');
 const closeBtn = document.querySelector('.close-btn');
 const closePopupBtn = document.getElementById('close-popup');
 
+// Handle form submission
 contactForm.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent form submission
 
@@ -136,15 +137,62 @@ contactForm.addEventListener('submit', (event) => {
     const email = contactForm.querySelector('#email').value.trim();
     const message = contactForm.querySelector('#message').value.trim();
 
-    if (name && email && message) {
-        // Show the popup
+    // Clear previous error messages
+    clearErrors();
+
+    // Validate fields
+    let isValid = true;
+
+    if (!name) {
+        showError('name', 'يرجى إدخال اسمك.');
+        isValid = false;
+    }
+
+    if (!email || !validateEmail(email)) {
+        showError('email', 'يرجى إدخال بريد إلكتروني صحيح.');
+        isValid = false;
+    }
+
+    if (!message) {
+        showError('message', 'يرجى كتابة رسالة.');
+        isValid = false;
+    }
+
+    // If all fields are valid, show the popup and reset the form
+    if (isValid) {
         popup.style.display = 'flex';
-        // Reset the form after submission
         contactForm.reset();
-    } else {
-        alert('يرجى ملء جميع الحقول.');
     }
 });
+
+// Function to validate email
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// Function to show error messages
+function showError(fieldId, message) {
+    const field = contactForm.querySelector(`#${fieldId}`);
+    const errorElement = contactForm.querySelector(`#${fieldId}-error`);
+    field.style.borderColor = 'red';
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+}
+
+// Function to clear error messages
+function clearErrors() {
+    const errorElements = contactForm.querySelectorAll('.error-message');
+    errorElements.forEach((element) => {
+        element.textContent = '';
+        element.style.display = 'none';
+    });
+
+    const inputs = contactForm.querySelectorAll('input, textarea');
+    inputs.forEach((input) => {
+        input.style.borderColor = '#ffcc00';
+    });
+}
 
 // Close the popup when clicking the close button or outside the popup
 closeBtn.addEventListener('click', () => {
@@ -155,7 +203,6 @@ closePopupBtn.addEventListener('click', () => {
     popup.style.display = 'none';
 });
 
-// Close the popup when clicking outside of it
 window.addEventListener('click', (event) => {
     if (event.target === popup) {
         popup.style.display = 'none';
@@ -183,3 +230,39 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// التحقق من حالة تسجيل الدخول عند تحميل الصفحة
+function updateNavbar() {
+    const authButtons = document.getElementById('auth-buttons');
+    const profileLink = document.getElementById('profile-link');
+
+    // جلب حالة المستخدم من localStorage
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
+    if (loggedInUser) {
+        // إذا كان المستخدم مسجل الدخول، إخفاء أزرار المصادقة وإظهار رابط الملف الشخصي
+        authButtons.style.display = 'none';
+        profileLink.style.display = 'flex';
+    } else {
+        // إذا لم يكن مسجل الدخول، إظهار أزرار المصادقة وإخفاء رابط الملف الشخصي
+        authButtons.style.display = 'flex';
+        profileLink.style.display = 'none';
+    }
+}
+
+// تسجيل الدخول (محاكاة)
+function login(email) {
+    localStorage.setItem("loggedInUser", email); // تخزين البريد الإلكتروني للمستخدم
+    updateNavbar();
+}
+
+// تسجيل الخروج
+function logout() {
+    localStorage.removeItem("loggedInUser"); // إزالة بيانات تسجيل الدخول
+    updateNavbar();
+}
+
+// تحديث الـ Navbar عند تحميل الصفحة
+window.onload = function () {
+    updateNavbar();
+};
