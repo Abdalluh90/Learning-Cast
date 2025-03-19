@@ -9,6 +9,8 @@
             text-align: center;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
         .container {
             margin-top: 50px;
@@ -28,99 +30,159 @@
             color: #555;
             margin-top: 10px;
         }
+        .game-over {
+            font-size: 24px;
+            color: red;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .character-selection {
+            margin-top: 20px;
+        }
+        .character-selection button {
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🚧 الموقع تحت الصيانة 🚧</h1>
         <p>نحن نعمل على تحسين الموقع. يمكنك اللعب أثناء الانتظار! 🎮</p>
-        <canvas id="gameCanvas" width="400" height="300"></canvas>
+
+        <!-- اختيار الشخصية -->
+        <div id="characterSelection" class="character-selection">
+            <p>اختر شخصيتك:</p>
+            <button id="selectTaqi">تقي (أزرق)</button>
+            <button id="selectShahd">شهد (وردي)</button>
+        </div>
+
+        <!-- سؤال التفاعل -->
+        <div id="questionContainer" style="display: none;">
+            <p>كم طولك؟ (أدخل رقمًا)</p>
+            <input type="number" id="heightInput" placeholder="أدخل طولك بالسنتيمتر">
+            <button id="submitHeight">إرسال</button>
+        </div>
+
+        <canvas id="gameCanvas" width="400" height="300" style="display: none;"></canvas>
         <div class="score" id="score">النقاط: 0</div>
+        <div class="game-over" id="gameOverMessage" style="display: none;">انتهت اللعبة!</div>
     </div>
-    
+
     <script>
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
-        let player = { x: 50, y: 250, width: 20, height: 20, dy: 0 };
-        let gravity = 0.5;
-        let isJumping = false;
+        const characterSelection = document.getElementById("characterSelection");
+        const questionContainer = document.getElementById("questionContainer");
+        const heightInput = document.getElementById("heightInput");
+        const submitHeight = document.getElementById("submitHeight");
+        const scoreElement = document.getElementById("score");
+        const gameOverMessage = document.getElementById("gameOverMessage");
+    
+        function adjustCanvasSize() {
+            canvas.width = Math.min(window.innerWidth * 0.9, 500);
+            canvas.height = Math.min(window.innerHeight * 0.5, 300);
+        }
+        adjustCanvasSize();
+        window.addEventListener("resize", adjustCanvasSize);
+    
+        let player = { 
+            x: 50, 
+            y: canvas.height - 50, 
+            width: 40, 
+            height: 40, 
+            dy: 0, 
+            color: "blue", 
+            name: "تقي", 
+            jumps: 0 // عدد القفزات المتاحة
+        };
+    
+        const gravity = 0.3;
+        const jumpStrength = -8; // قفزة أقل قوة لجعل القفز المتكرر متوازنًا
         let score = 0;
         let obstacles = [];
+        let gameInterval;
         let gameOver = false;
-
-        // رسم اللاعب
-        function drawPlayer() {
-            ctx.fillStyle = "blue";
-            ctx.fillRect(player.x, player.y, player.width, player.height);
-        }
-
-        // رسم الأرض
+        const obstacleSpeed = 2.5;
+        let lastJumpTime = 0;
+    
         function drawGround() {
             ctx.fillStyle = "#8B4513";
-            ctx.fillRect(0, 270, canvas.width, 30);
+            ctx.fillRect(0, canvas.height - 30, canvas.width, 30);
         }
-
-        // تحديث حالة اللاعب
+    
+        function drawPlayer() {
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+            
+            // 🎯 إضافة اسم الشخصية فوقها
+            ctx.fillStyle = "black";
+            ctx.font = "14px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(player.name, player.x + player.width / 2, player.y - 5);
+        }
+    
         function updatePlayer() {
-            if (isJumping) {
-                player.dy -= gravity;
-            } else {
-                player.dy += gravity;
-            }
+            player.dy += gravity;
             player.y += player.dy;
-
-            if (player.y >= 250) {
-                player.y = 250;
-                isJumping = false;
+    
+            if (player.y >= canvas.height - 50) {
+                player.y = canvas.height - 50;
+                player.dy = 0;
+                player.jumps = 0; // إعادة تعيين القفزات عند ملامسة الأرض
             }
         }
-
-        // إنشاء العوائق
+    
         function createObstacle() {
-            if (Math.random() < 0.02) {
-                obstacles.push({ x: canvas.width, y: 250, width: 20, height: 20 });
+            if (Math.random() < 0.015) {
+                obstacles.push({ x: canvas.width, y: canvas.height - 50, width: 20, height: 20 });
             }
         }
-
-        // رسم العوائق
+    
         function drawObstacles() {
             ctx.fillStyle = "red";
             obstacles.forEach(obstacle => {
                 ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
             });
         }
-
-        // تحديث العوائق
+    
         function updateObstacles() {
             obstacles.forEach((obstacle, index) => {
-                obstacle.x -= 4;
-
-                // التحقق من التصادم
-                if (
-                    player.x < obstacle.x + obstacle.width &&
-                    player.x + player.width > obstacle.x &&
-                    player.y < obstacle.y + obstacle.height &&
-                    player.y + player.height > obstacle.y
-                ) {
+                obstacle.x -= obstacleSpeed;
+                if (player.x < obstacle.x + obstacle.width && player.x + player.width > obstacle.x &&
+                    player.y < obstacle.y + obstacle.height && player.y + player.height > obstacle.y &&
+                    Date.now() - lastJumpTime > 500) {
                     gameOver = true;
+                    gameOverMessage.innerText = `لقد اصطدمت! إعادة التشغيل الآن...`;
+                    gameOverMessage.style.display = "block";
+                    clearInterval(gameInterval);
+                    setTimeout(restartGame, 2000);
                 }
-
-                // إزالة العوائق التي خرجت من الشاشة
                 if (obstacle.x + obstacle.width < 0) {
                     obstacles.splice(index, 1);
                     score++;
                 }
             });
         }
-
-        // حلقة اللعبة
+    
         function gameLoop() {
-            if (gameOver) {
-                alert(`انتهت اللعبة! النقاط: ${score}`);
-                document.location.reload();
-                return;
-            }
-
+            if (gameOver) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawGround();
             drawPlayer();
@@ -128,21 +190,66 @@
             createObstacle();
             drawObstacles();
             updateObstacles();
-
-            document.getElementById("score").innerText = `النقاط: ${score}`;
-            requestAnimationFrame(gameLoop);
+            scoreElement.innerText = `النقاط: ${score}`;
         }
-
-        // التحكم بالقفز
+    
+        function startGame() {
+            questionContainer.style.display = "none";
+            canvas.style.display = "block";
+            gameOverMessage.style.display = "none";
+            player.y = canvas.height - 50;
+            score = 0;
+            obstacles = [];
+            gameOver = false;
+            gameInterval = setInterval(gameLoop, 16);
+        }
+    
+        function restartGame() {
+            gameOverMessage.style.display = "none";
+            startGame();
+        }
+    
+        // ✅ **إمكانية القفز المتكرر (Double Jump)**
         document.addEventListener("keydown", function(event) {
-            if (event.code === "Space" && player.y >= 250) {
-                isJumping = true;
-                player.dy = -8;
+            if (event.code === "Space" && player.jumps < 2) { // السماح بقفزتين متتاليتين
+                player.dy = jumpStrength;
+                lastJumpTime = Date.now();
+                player.jumps++;
             }
         });
-
-        // بدء اللعبة
-        gameLoop();
+    
+        // ✅ **إضافة دعم القفز عبر اللمس للأجهزة المحمولة**
+        canvas.addEventListener("click", function() {
+            if (player.jumps < 2) {
+                player.dy = jumpStrength;
+                lastJumpTime = Date.now();
+                player.jumps++;
+            }
+        });
+    
+        document.getElementById("selectTaqi").addEventListener("click", function() {
+            player.color = "blue";
+            player.name = "تقي";
+            characterSelection.style.display = "none";
+            questionContainer.style.display = "block";
+        });
+    
+        document.getElementById("selectShahd").addEventListener("click", function() {
+            player.color = "pink";
+            player.name = "شهد";
+            characterSelection.style.display = "none";
+            questionContainer.style.display = "block";
+        });
+    
+        submitHeight.addEventListener("click", function() {
+            const height = parseInt(heightInput.value);
+            if (!isNaN(height)) {
+                alert(`بطل كذب والعب! أنت الآن تلعب بشخصية ${player.name}.`);
+                startGame();
+            } else {
+                alert("أدخل رقمًا صحيحًا!");
+            }
+        });
     </script>
-</body>
-</html>
+    
+    
