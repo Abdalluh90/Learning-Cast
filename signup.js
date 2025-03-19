@@ -1,68 +1,95 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("📌 تم تحميل الصفحة بنجاح!");
+
     const signupForm = document.querySelector(".signup-form");
+
+    if (!signupForm) {
+        console.error("❌ لم يتم العثور على نموذج التسجيل!");
+        return;
+    }
+
     const passwordInput = document.getElementById("password");
     const confirmPasswordInput = document.getElementById("confirm-password");
-    const strengthText = document.getElementById("strength-text");
-    const strengthBar = document.querySelector(".password-strength .bar");
 
-    // التحقق من قوة كلمة المرور
-    passwordInput.addEventListener("input", function () {
-        const password = passwordInput.value;
-        let strength = 0;
-        
-        if (password.length >= 8) strength++;
-        if (/[A-Z]/.test(password)) strength++;
-        if (/[0-9]/.test(password)) strength++;
-        if (/[^A-Za-z0-9]/.test(password)) strength++;
+    // ✅ التأكد مما إذا كان المستخدم مسجل دخول مسبقًا
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+        console.log("✅ المستخدم مسجل مسبقًا، يتم تحويله إلى صفحة البروفايل...");
+        window.location.href = "profile.html";
+        return;
+    }
 
-        const strengths = ["ضعيفة", "متوسطة", "جيدة", "قوية"];
-        strengthText.textContent = `قوة كلمة المرور: ${strengths[strength]}`;
-        strengthBar.style.width = `${strength * 25}%`;
-        strengthBar.style.background = ["red", "orange", "yellow", "green"][strength];
-    });
-
-    // عند إرسال نموذج التسجيل
+    // ✅ عند إرسال النموذج
     signupForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+        e.preventDefault(); // منع إعادة تحميل الصفحة
 
-        const username = document.getElementById("username").value.trim();
+        console.log("📌 يتم تنفيذ إرسال النموذج...");
+
+        // 🔹 جلب القيم من الحقول
+        const firstName = document.getElementById("first-name").value.trim();
+        const lastName = document.getElementById("last-name").value.trim();
         const email = document.getElementById("email").value.trim();
-        const age = document.getElementById("age").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const birthdate = document.getElementById("birthdate").value;
         const gender = document.getElementById("gender").value;
         const password = passwordInput.value;
         const confirmPassword = confirmPasswordInput.value;
 
-        // التحقق من صحة البيانات
-        if (!username || !email || !age || !gender || !password || !confirmPassword) {
-            alert("يرجى ملء جميع الحقول!");
+        console.log("📌 التحقق من صحة البيانات...");
+
+        // 🔹 التأكد من إدخال جميع الحقول
+        if (!firstName || !lastName || !email || !phone || !birthdate || !gender || !password || !confirmPassword) {
+            alert("❌ يرجى ملء جميع الحقول!");
             return;
         }
 
+        // 🔹 التحقق من صحة البريد الإلكتروني
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("❌ يرجى إدخال بريد إلكتروني صالح!");
+            return;
+        }
+
+        // 🔹 التحقق من صحة رقم الهاتف (10 إلى 15 رقمًا)
+        const phoneRegex = /^[0-9]{10,15}$/;
+        if (!phoneRegex.test(phone)) {
+            alert("❌ يرجى إدخال رقم هاتف صحيح يحتوي على 10-15 رقمًا!");
+            return;
+        }
+
+        // 🔹 التحقق من تطابق كلمة المرور
         if (password !== confirmPassword) {
-            alert("كلمة المرور غير متطابقة!");
+            alert("❌ كلمة المرور غير متطابقة!");
             return;
         }
 
+        // 🔹 التحقق مما إذا كان البريد الإلكتروني مسجل مسبقًا
         if (localStorage.getItem(email)) {
-            alert("البريد الإلكتروني مسجل مسبقًا!");
+            alert("❌ البريد الإلكتروني مسجل مسبقًا!");
             return;
         }
 
-        // حفظ البيانات في LocalStorage
+        // ✅ تخزين بيانات المستخدم في `localStorage`
         const userData = {
-            username,
+            firstName,
+            lastName,
             email,
-            age,
+            phone,
+            birthdate,
             gender,
             password,
-            phone: "",
-            profilePic: ""
+            profilePic: "" // يمكن إضافته لاحقًا
         };
 
-        localStorage.setItem(email, JSON.stringify(userData));
-        localStorage.setItem("loggedInUser", email);
+        console.log("✅ يتم حفظ بيانات المستخدم...");
+        localStorage.setItem(email, JSON.stringify(userData)); // حفظ البيانات
+        localStorage.setItem("loggedInUser", email); // تسجيل الدخول
 
-        // تحويل المستخدم إلى صفحة البروفايل
-        window.location.href = "profile.html";
+        // ✅ عرض رسالة تأكيد وتحويل المستخدم إلى `profile.html`
+        alert("✅ تم إنشاء الحساب بنجاح! سيتم تحويلك إلى صفحة البروفايل.");
+        console.log("✅ تحويل المستخدم إلى صفحة البروفايل...");
+        setTimeout(() => {
+            window.location.href = "profile.html"; // التحويل بعد ثانية واحدة
+        }, 1000);
     });
 });

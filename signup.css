@@ -1,162 +1,120 @@
-/* General Styles */
+/* استيراد الخطوط */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* إعدادات عامة */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* تحسين خلفية الصفحة */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffcc00, #ff6666, #6666ff); /* ألوان مدمجة */
-    background-size: 300% 300%; /* تأثير تحريك الخلفية */
-    animation: gradient-animation 10s infinite; /* تحريك التدرج */
-    height: 100vh;
+    background: linear-gradient(to right, #141e30, #243b55); /* خلفية أزرق داكن مع تأثير متدرج */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Prevent scrolling */
+    min-height: 100vh;
+    padding: 20px;
+    direction: rtl;
 }
 
-/* Gradient Animation */
-@keyframes gradient-animation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Particles Background */
-#particles-js {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-/* Signup Container */
+/* تحسين توزيع النموذج وجعله أكثر احترافية */
 .signup-container {
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
-}
-
-.signup-box {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.1); /* تأثير زجاجي */
+    backdrop-filter: blur(15px);
     padding: 40px;
-    border-radius: 20px; /* زوايا مستديرة */
-    box-shadow: 5px 5px 10px #6607d2, -5px -5px 10px hsl(192, 92%, 49%); /* تأثير Neumorphism */
-    animation: fadeIn 1s ease-in-out;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px; /* جعل النموذج بحجم مناسب */
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* تحسين عنوان النموذج */
 .signup-box h2 {
-    font-size: 36px;
     margin-bottom: 20px;
-    color: #333;
+    font-size: 24px;
+    color: #ffffff;
 }
 
-.signup-box h2 i {
-    margin-left: 10px;
-    color: #ffcc00;
+/* تحسين توزيع الحقول بحيث لا تتداخل */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* إضافة تباعد بين الحقول */
 }
 
-/* Input Fields */
+/* تحسين شكل الحقول */
 .input-group {
     position: relative;
-    margin-bottom: 20px;
+    width: 100%;
 }
 
 .input-group i {
     position: absolute;
+    right: 15px;
     top: 50%;
-    left: 15px;
     transform: translateY(-50%);
-    color: #ffcc00;
     font-size: 18px;
+    color: #ffcc00;
+    pointer-events: none;
 }
 
 .input-group input,
-.input-group select { /*الوان مبربعات الادخال */
+.input-group select {
     width: 100%;
-    padding: 14px 40px;
-    border: none;
-    border-radius: 50px; /* زوايا مستديرة بالكامل */
-    background-color: hsla(0, 38%, 85%, 0.575);
-    box-shadow: 5px 5px 10px #a991f2, -5px -5px 10px hwb(226 60% 6%); /* تأثير Neumorphism */
-    font-size: 18px;
-    transition: box-shadow 0.3s ease;
-}
-
-.input-group input:focus,
-.input-group select:focus { /* تأثير عند اضافه كلامز */
-    box-shadow: inset 5px 5px 10px hsl(203, 78%, 68%), inset -5px -5px 10px hsl(157, 77%, 49%); /* تأثير عند التركيز */
+    padding: 12px 40px 12px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     outline: none;
 }
 
-/* Password Strength Indicator */
-.password-strength {
-    margin-top: 20px;
-    position: relative;
+/* تحسين مظهر النصوص داخل الحقول */
+.input-group input::placeholder,
+.input-group select {
+    color: #ddd;
 }
 
-.password-strength .bar {
-    height: 5px;
-    background: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #ffcc00;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
 }
 
-.password-strength .bar::before {
-    content: '';
-    display: block;
-    height: 100%;
-    width: 0%;
-    background: #ffcc00;
-    transition: width 0.3s ease;
-}
-
-#strength-text {
-    font-size: 16px;
-    margin-top: 5px;
-    color: #121110;
-}
-
-/* Error Messages */
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-/* Signup Button */
+/* تحسين تصميم زر التسجيل */
 .signup-btn {
-    background: linear-gradient(135deg, #ffcc00, #ff6666); /* تدرج ألوان */
+    width: 100%;
+    background: #ffcc00;
+    color: #000;
+    padding: 14px;
+    font-size: 18px;
     border: none;
-    color: white;
-    padding: 14px 20px;
-    font-size: 20px;
-    border-radius: 50px; /* زوايا مستديرة بالكامل */
+    border-radius: 25px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 5px 5px 10px #4565f4, -5px -5px 10px #68b3f9; /* تأثير Neumorphism */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+    font-weight: bold;
 }
 
 .signup-btn:hover {
-    transform: scale(1.1);
-    box-shadow: inset 5px 5px 10px #4808d3, inset -5px -5px 10px #0c3ae3; /* تأثير عند التحويم */
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 204, 0, 0.6);
+    background: #e6b800;
 }
 
-/* Login Link */
+/* تحسين تصميم رابط تسجيل الدخول */
 .login-link {
-    margin-top: 20px;
-    font-size: 18px;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
+    color: white;
 }
 
 .login-link a {
@@ -170,89 +128,22 @@ body {
     color: #e6b800;
 }
 
-/* Message Bubble */
-.message-bubble {
-    position: fixed;
-    top: 90px; /* أعلى الصفحة */
-    left: 920px; /* يمين الصفحة */
-    background: #ffcc00;
-    color: black;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(103, 249, 55, 0.862);
-    animation: fadeInOut 5s ease-in-out forwards;
-}
-
-.message-bubble.success {
-    background: #4caf50; /* أخضر للنجاح */
-}
-
-.message-bubble.error {
-    background: #ff4d4d; /* أحمر للخطأ */
-}
-
-.message-bubble.warning {
-    background: #ff9800; /* برتقالي للتحذير */
-}
-
-@keyframes fadeInOut {
-    0%, 100% {
+/* تحسين الرسوم المتحركة */
+@keyframes fadeIn {
+    from {
         opacity: 0;
-        transform: translateY(-20px); /* تحريك للأعلى */
+        transform: translateY(-20px);
     }
-    10%, 90% {
+    to {
         opacity: 1;
-        transform: translateY(0); /* العودة للوضع الطبيعي */
+        transform: translateY(0);
     }
 }
 
-/* Back to Top Button */
-#back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ffcc00;
-    color: black;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    cursor: pointer;
-    display: none; /* Hidden by default */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-}
-
-#back-to-top:hover {
-    background-color: #e6b800;
-}
-
-/* Tooltip Styles */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #ffcc00;
-    color: black;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%; /* Above the icon */
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+/* تحسين استجابة التصميم للأجهزة الصغيرة */
+@media (max-width: 768px) {
+    .signup-container {
+        max-width: 90%;
+        padding: 30px;
+    }
 }

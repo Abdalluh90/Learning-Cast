@@ -9,59 +9,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <!-- AOS Library -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
-    <!-- Particles Background -->
-    <div id="particles-js"></div>
 
     <div class="signup-container">
-        <div class="signup-box" data-aos="fade-up">
+        <div class="signup-box">
             <h2><i class="fas fa-user-plus"></i> إنشاء حساب جديد</h2>
             <form class="signup-form" novalidate>
-                <!-- Username Field -->
+                <!-- First Name -->
                 <div class="input-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="username" placeholder="اسم المستخدم" required autocomplete="username" aria-label="اسم المستخدم" aria-invalid="false">
+                    <input type="text" id="first-name" placeholder="الاسم الأول" required autocomplete="given-name">
                 </div>
 
-                <!-- Email Field -->
+                <!-- Last Name -->
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="last-name" placeholder="الاسم الأخير" required autocomplete="family-name">
+                </div>
+
+                <!-- Email -->
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="email" placeholder="البريد الإلكتروني" required autocomplete="email" aria-label="البريد الإلكتروني" aria-invalid="false">
+                    <input type="email" id="email" placeholder="البريد الإلكتروني" required autocomplete="email">
                 </div>
 
-                <!-- Age Field -->
+                <!-- Phone Number -->
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="phone" placeholder="رقم الهاتف" required autocomplete="tel">
+                </div>
+
+                <!-- Birthdate -->
                 <div class="input-group">
                     <i class="fas fa-calendar-alt"></i>
-                    <input type="number" id="age" placeholder="العمر" required autocomplete="bday" aria-label="العمر" aria-invalid="false">
+                    <input type="date" id="birthdate" required autocomplete="bday">
                 </div>
 
-                <!-- Gender Field -->
+                <!-- Gender -->
                 <div class="input-group">
                     <i class="fas fa-venus-mars"></i>
-                    <select id="gender" required aria-label="اختر النوع" aria-invalid="false">
+                    <select id="gender" required>
                         <option value="" disabled selected>اختر النوع</option>
                         <option value="male">ذكر</option>
                         <option value="female">أنثى</option>
                     </select>
                 </div>
 
-                <!-- Password Field -->
+                <!-- Password -->
                 <div class="input-group password-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="كلمة المرور" required autocomplete="new-password" aria-label="كلمة المرور" aria-invalid="false">
-                </div>
-                <div class="password-strength">
-                    <div class="bar"></div>
-                    <p id="strength-text">قوة كلمة المرور: ضعيفة</p>
+                    <input type="password" id="password" placeholder="كلمة المرور" required autocomplete="new-password">
                 </div>
 
-                <!-- Confirm Password Field -->
+                <!-- Confirm Password -->
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="confirm-password" placeholder="تأكيد كلمة المرور" required autocomplete="new-password" aria-label="تأكيد كلمة المرور" aria-invalid="false">
+                    <input type="password" id="confirm-password" placeholder="تأكيد كلمة المرور" required autocomplete="new-password">
                 </div>
 
                 <!-- Submit Button -->
@@ -72,36 +76,6 @@
             </form>
         </div>
     </div>
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
-
-    <!-- AOS Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Particles.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="signup.js"></script>
-    <script>
-        AOS.init();
-
-        // Initialize Particles.js
-        particlesJS.load('particles-js', 'particles.json', function() {
-            console.log('Particles.js loaded');
-        });
-
-        // Back to Top Button
-        window.addEventListener('scroll', () => {
-            const backToTopButton = document.getElementById('back-to-top');
-            if (window.scrollY > 300) {
-                backToTopButton.style.display = 'block';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        });
-
-        document.getElementById('back-to-top').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
 </body>
 </html>
