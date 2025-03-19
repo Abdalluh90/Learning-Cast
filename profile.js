@@ -128,5 +128,5 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 });
 function goToHome() {
-    window.location.href = "home.html"; // استبدل "index.html" بالصفحة الرئيسية لديك
+    window.location.href = "index.html"; // استبدل "index.html" بالصفحة الرئيسية لديك
 }
